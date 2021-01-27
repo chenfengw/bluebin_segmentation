@@ -60,7 +60,7 @@ if __name__ == '__main__':
       cv2.destroyAllWindows()
 
       # convert from BGR (opencv convention) to RGB (everyone's convention)
-      img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+      img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
       # segment the image
       mask_img = my_detector.segment_image(img)
