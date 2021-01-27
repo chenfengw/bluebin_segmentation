@@ -48,9 +48,9 @@ class BinDetector():
 				mask_img - a binary image with 1 if the pixel in the original image is red and 0 otherwise
 		'''
 		if self.mean is None or self.cov is None:
-			self.mean = np.load("param_mean_HSV.npy",allow_pickle=True).item()
-			self.cov = np.load("param_cov_HSV.npy",allow_pickle=True).item()
-			self.prior = np.load("param_prior.npy",allow_pickle=True).item()
+			self.mean = np.load("bin_detection/param_mean_HSV.npy",allow_pickle=True).item()
+			self.cov = np.load("bin_detection/param_cov_HSV.npy",allow_pickle=True).item()
+			self.prior = np.load("bin_detection/param_prior.npy",allow_pickle=True).item()
 
 		# convert image to n_pixels x 3 
 		img_new = np.reshape(img,[img.shape[0]*img.shape[1],img.shape[-1]])

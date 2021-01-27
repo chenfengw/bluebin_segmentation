@@ -68,8 +68,8 @@ class PixelClassifier():
     # print(y.shape)
 
     # training 
-    x_train = np.load("train_x.npy")
-    y_train = np.load("train_y.npy")
+    x_train = np.load("pixel_classification/train_x.npy")
+    y_train = np.load("pixel_classification/train_y.npy")
     self.train(x_train,y_train)
 
     y_pred_all = []
