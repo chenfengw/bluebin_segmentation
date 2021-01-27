@@ -1,0 +1,7 @@
+HSV, dist between mean is 79.235480088518
+HLS, dist between mean is 64.43887394357554
+LAB, dist between mean is 35.76599756368606
+RGB, dist between mean is 52.50720770742124
+YUV, dist between mean is 32.113769280173656
+
+blue size: 3726734, other size: 35903646
