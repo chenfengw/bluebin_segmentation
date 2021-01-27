@@ -43,11 +43,11 @@ class BinDetector():
 			call other functions in this class if needed
 			
 			Inputs:
-				img - original image in RGB
+				img - original image in BGR
 			Outputs:
 				mask_img - a binary image with 1 if the pixel in the original image is red and 0 otherwise
 		'''
-		img = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
+		img = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 		if self.mean is None or self.cov is None:
 			self.mean = np.load("bin_detection/param_mean_HSV.npy",allow_pickle=True).item()
 			self.cov = np.load("bin_detection/param_cov_HSV.npy",allow_pickle=True).item()
