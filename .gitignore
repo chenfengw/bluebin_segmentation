@@ -5,6 +5,7 @@ training_*.npy
 *.DS_Store
 test_*.npy
 /pixel_classification/data
+/bin_detection/data
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
