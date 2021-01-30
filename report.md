@@ -79,9 +79,9 @@ First we label the recycling bin region in the image, this will be the training 
 
 ##### Color Space
 
-Lighting conditions can affect RGB values dramatically. Therefore picking a different colorspace can make the classifier more robust and accurate in various conditions. Here we experiment with following colorspaces `["HSV","HLS","LAB","RGB","YUV"]`. We then measure the distance between $\mu_{\text{bin}}$ and $\mu_{\text{not_bin}}$. The distance between the mean vector of each class indicates how far they are apart under that particular colorspace. When mean vectors are far apart, classifier is less likely to mislabel one class for another. 
+Lighting conditions can affect RGB values dramatically. Therefore picking a different colorspace can make the classifier more robust and accurate in various conditions. Here we experiment with following colorspaces `["HSV","HLS","LAB","RGB","YUV"]`. We then measure the distance between $\mu_{\text{bin}}$ and $\mu_{\text{not_bin}}$, which indicates how far they are apart under that particular colorspace. When mean vectors are far apart, classifier is less likely to mislabel one class for another. 
 
-|   Colorspace   | $\|\mu_{\text{bin}} - \mu_{\text{not bin}}\|$   |
+|   Colorspace   | $\|\mu_{\text{bin}} - \mu_{\text{not_bin}}\|$  |
 | ---- | ---- |
 |   HSV   |  79.23    |
 |   HLS   |   64.43   |
@@ -91,7 +91,30 @@ Lighting conditions can affect RGB values dramatically. Therefore picking a diff
 
 From this table, we can clearly see HSV is the best colorspace to use.
 
-#### Image Denoising 
+#### Image Denoising
+
+The segmentation mask might not be perfect. Therefore denoising can help to remove pixels that are not part of the recycling bin. We choose to use `opening` from skimage, which removes small bright spots. As we can see below, before using `opening` there are 330 regions that can potentially be labeled as recyling bins. After `opening`, there are only 4 candidates left.
+
+![before_opening](/Users/Charlie/Downloads/before_opening.png)
+![before_opening](/Users/Charlie/Downloads/after_opening.png "title")
+
+#### Bounding Box Rejection
+
+Recycling bins has a particular size and shape. It's a tall rectangle that occupies significant parts of the image. Consequently, bounding boxes that are too small  or has the shape of a fat rectangle are unlikely to be recycling bins.  Here we propose the following algorithm:
+
+1. Reject bounding box that covers less than $\frac{1}{200}$ of the entire image.
+2. Reject bounding box whose width is larger than 1.5 times the height.
+3. Among remaining bounding boxes, reject those that are less than $\frac{1}{10}$ the size of  the largest bounding box.
+
+## Results
+
+
+
+
+
+
+
+
 
 
 

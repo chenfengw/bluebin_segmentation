@@ -114,7 +114,7 @@ class BinDetector():
 			by = (minr, minr, maxr, maxr, minr)
 			box_candidates.append((area,[bx,by]))
 		
-		# make another slection based on area ration
+		# make another slection based on area ratio
 		box_final = []
 		for box_area, box_coord in box_candidates:
 			if box_area < 0.1*max_area:

@@ -6,7 +6,7 @@ ECE276A WI21 PR1: Color Classification and Recycling Bin Detection
 import os, cv2
 from bin_detector import BinDetector
 import yaml
-
+import numpy as np
 
 def iou(box1,box2):
   '''
@@ -43,10 +43,11 @@ def compare_boxes(true_boxes, estm_boxes):
 if __name__ == '__main__':
   folder = "bin_detection/data/validation"
   my_detector = BinDetector()
+  box_cooridates = {}
   for filename in os.listdir(folder):
     if filename.endswith(".jpg"):
       # read one test image
-      img = cv2.imread(os.path.join(folder,filename))
+      img = cv2.imread(os.path.join(folder,filename)) # in BGR
 
       # load ground truth label
       with open(os.path.join(folder,os.path.splitext(filename)[0]+'.txt'), 'r') as stream:
@@ -59,15 +60,15 @@ if __name__ == '__main__':
       cv2.waitKey(0)
       cv2.destroyAllWindows()
 
-      # convert from BGR (opencv convention) to RGB (everyone's convention)
-      img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-
       # segment the image
       mask_img = my_detector.segment_image(img)
 
       # detect recycling bins
       estm_boxes = my_detector.get_bounding_boxes(mask_img)
       
+      # save bounding box coordinates
+      box_cooridates[filename] = estm_boxes
+
       # The autograder checks your answers to the functions segment_image() and get_bounding_box()
       
       # measure accuracy      
@@ -75,5 +76,9 @@ if __name__ == '__main__':
       
       print('The accuracy for %s is %f %%.'%(filename,accuracy*100))
 
+  # print bounding box coordinates
+  for file_name, cooridantes in box_cooridates.items():
+    print("{} : {}".format(file_name,cooridantes))
+  print("coordinates: {}".format(box_cooridates))
 
 
