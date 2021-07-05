@@ -37,6 +37,7 @@ Using bayes rule, we can write the joint probability as
 ![](images/eq2.png)
 
 Therefore the posterior can be written as
+
 ![](images/eq3.png)
 
 Our classifier is therefore in the form:
