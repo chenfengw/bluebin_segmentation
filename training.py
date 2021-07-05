@@ -15,7 +15,7 @@ def train_gaussian_classifer(colorspace="HSV"):
     total_samples = 0
 
     for class_type in ["bluebins","others",'likeblue']:
-        data = np.load("training_{}_{}.npy".format(class_type,colorspace))
+        data = np.load("data/training/training_{}_{}.npy".format(class_type,colorspace))
         param_mean[class_type] = np.mean(data,axis=0)
         param_cov[class_type] = np.cov(data,rowvar=False)
         param_prior[class_type] = len(data) # class frequency
