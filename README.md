@@ -1,6 +1,6 @@
-# Trash Bin Detection
+# Recycle Bin Detection
 
-This repository contains code for detecting blue trash bin using gaussian classifier.
+This repository contains code for detecting blue recycle bins using gaussian classifier.
 
 ## Examples
 ![](data/results/results1.png)|![](data/results/results2.png)
