@@ -16,7 +16,7 @@ pip install -r requirements.txt
 
 ## Training
 
-To train the model(s), run this command:
+To train the model, run this command:
 
 ```train
 python training.py
